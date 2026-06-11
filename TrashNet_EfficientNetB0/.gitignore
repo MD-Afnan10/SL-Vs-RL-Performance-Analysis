@@ -30,17 +30,13 @@ dist/
 # Logs and reports
 *.log
 logs/
-output/
 
 # Data and models
-dataset/
 *.h5
-*.keras
 *.pt
 *.ckpt
 models/
 weights/
-efficientnetb0_trashnet.keras
 
 # Checkpoints
 checkpoint
