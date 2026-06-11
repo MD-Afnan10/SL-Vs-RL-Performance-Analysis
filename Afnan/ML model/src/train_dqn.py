@@ -3,8 +3,8 @@ import tensorflow as tf
 from tensorflow.keras import layers
 
 # Load data
-X = np.load("../extracted_features/features.npy").astype(np.float32)
-y = np.load("../extracted_features/labels.npy")
+X = np.load("extracted_features/extracted_train/features.npy").astype(np.float32)
+y = np.load("extracted_features/extracted_train/labels.npy")
 
 num_actions = 6
 
@@ -21,7 +21,7 @@ epsilon = 1.0
 
 print("Training started...")
 
-for epoch in range(3):
+for epoch in range(10):
     print("Epoch", epoch)
 
     for i in range(len(X)):
@@ -48,6 +48,6 @@ for epoch in range(3):
     epsilon *= 0.9
     print("epsilon:", epsilon)
 
-model.save("../models/dqn_model.h5")
+model.save("Models\dqn_model.h5")
 
 print("Done ✔")

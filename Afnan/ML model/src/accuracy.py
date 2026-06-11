@@ -9,7 +9,7 @@ from utils import load_feature_extractor, preprocess_image, classes
 feature_extractor = load_feature_extractor()
 
 dqn = tf.keras.models.load_model(
-    "../models/dqn_model.h5",
+    "Models/dqn_model.h5",
     compile=False
 )
 
@@ -18,8 +18,8 @@ print("Models loaded ✔")
 # ======================
 # LOAD TEST DATA
 # ======================
-X = np.load("../extracted_features/features.npy").astype(np.float32)
-y = np.load("../extracted_features/labels.npy")
+X = np.load("extracted_features/extracted_test/features.npy").astype(np.float32)
+y = np.load("extracted_features/extracted_test/labels.npy")
 
 num_samples = len(X)
 
