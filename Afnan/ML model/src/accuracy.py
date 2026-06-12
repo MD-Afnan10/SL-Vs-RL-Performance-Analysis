@@ -1,53 +1,68 @@
 import numpy as np
 import tensorflow as tf
-import os
-from utils import load_feature_extractor, preprocess_image, classes
+import joblib
 
 # ======================
-# LOAD MODELS
+# LOAD MODEL
 # ======================
-feature_extractor = load_feature_extractor()
 
 dqn = tf.keras.models.load_model(
     "Models/dqn_model.h5",
     compile=False
 )
 
-print("Models loaded ✔")
+# Load scaler used during training
+scaler = joblib.load(
+    "Models/scaler.pkl"
+)
+
+print("Model loaded ✔")
 
 # ======================
 # LOAD TEST DATA
 # ======================
-X = np.load("extracted_features/extracted_test/features.npy").astype(np.float32)
-y = np.load("extracted_features/extracted_test/labels.npy")
+
+X = np.load(
+    "extracted_features/extracted_test/features.npy"
+).astype(np.float32)
+
+y = np.load(
+    "extracted_features/extracted_test/labels.npy"
+)
+
+# Apply same normalization used in training
+X = scaler.transform(X)
 
 num_samples = len(X)
 
 correct = 0
 
 # ======================
-# TEST LOOP (ACCURACY)
+# TEST LOOP
 # ======================
+
 for i in range(num_samples):
 
-    # ensure correct shape (1, 1280)
     state = X[i].reshape(1, -1)
 
-    # DQN prediction
-    q_values = dqn.predict(state, verbose=0)
+    q_values = dqn.predict(
+        state,
+        verbose=0
+    )
 
-    predicted_class = np.argmax(q_values)
+    predicted_class = np.argmax(
+        q_values
+    )
 
-    # check accuracy
     if predicted_class == y[i]:
         correct += 1
+
 print("Testing complete ✔")
-
-
 
 # ======================
 # FINAL ACCURACY
 # ======================
+
 accuracy = correct / num_samples
 
 print("\n======================")

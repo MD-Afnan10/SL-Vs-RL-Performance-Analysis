@@ -5,7 +5,7 @@ from utils import load_feature_extractor, preprocess_image, get_label_from_folde
 
 model = load_feature_extractor()
 
-dataset_path = "dataset_split/test"
+dataset_path = "dataset_split/train"
 features = []
 labels = []
 
@@ -27,8 +27,8 @@ labels = np.array(labels)
 
 #os.makedirs("extracted_features", exist_ok=True)
 
-np.save("extracted_features/extracted_test/features.npy", features)
-np.save("extracted_features/extracted_test/labels.npy", labels)
+np.save("extracted_features/extracted_train/features.npy", features)
+np.save("extracted_features/extracted_train/labels.npy", labels)
 
 print("Feature extraction complete!")
 print("Feature shape:", features.shape)
