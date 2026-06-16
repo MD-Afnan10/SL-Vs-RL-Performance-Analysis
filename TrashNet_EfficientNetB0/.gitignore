@@ -1,0 +1,52 @@
+.venv
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+.venv/
+pip-wheel-metadata/
+
+# VS Code / JetBrains
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Python artifacts
+*.egg-info/
+build/
+dist/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints
+
+# Logs and reports
+*.log
+logs/
+
+# Data and models
+*.h5
+*.pt
+*.ckpt
+models/
+weights/
+
+# Checkpoints
+checkpoint
+checkpoints/
+
+# Secrets
+.env
+credentials.json
+
+# Coverage / cache
+.coverage
+.cache
+

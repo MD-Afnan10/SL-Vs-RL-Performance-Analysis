@@ -1,0 +1,11 @@
+# Minimal deps for the TrashNet EfficientNetB0 training script.
+#
+# NOTE (Apple Silicon): you may want `tensorflow-macos` + `tensorflow-metal`
+# instead of plain `tensorflow`, depending on your environment.
+# If you already have TensorFlow installed and working, you can keep it.
+
+tensorflow
+scikit-learn
+matplotlib
+numpy
+seaborn
